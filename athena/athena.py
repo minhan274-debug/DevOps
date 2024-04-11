@@ -127,7 +127,7 @@ def main():
         table_names = ['master_item_histories', 'facility_item_histories', 'contract_line_histories', 'contract_match_histories', 'price_histogram_histories', 'requisition_item_histories']  # Modify table names list here
         
         # Create a temporary folder for each database
-        temp_folder = f"/vol1/athena/{db_name}/"
+        temp_folder = f"home/ubuntu/vol1/athena/{db_name}/"
         os.makedirs(temp_folder, exist_ok=True)
     '''    
         # Calculate start and end time for the time range (from the 1st day of the current month to the 1st day of the next month)
