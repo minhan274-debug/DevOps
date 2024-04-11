@@ -91,6 +91,7 @@ def main():
     main_conn = connect_to_main_database()
     if main_conn is None:
         return
+    print("SUCCESS")
     '''
     # Get db_name, db_ip information from the organizations table
     organizations_info = get_organizations_info(main_conn)
