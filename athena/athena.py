@@ -122,7 +122,7 @@ def main():
         if db_conn is None:
             continue
         else: 
-            print("success to connect: {db_name}")
+            print(f"success to connect: {db_name}")
     '''
         # Table names list
         table_names = ['table_a_name', 'table_b_name', 'table_c_name']  # Modify table names list here
