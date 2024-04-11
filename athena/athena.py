@@ -80,7 +80,7 @@ def export_to_csv(conn, db_name, table_name, csv_filename, start_date, end_date)
         
         # Execute a query to fetch data from the table and write to a CSV file
         #cur.execute(f"COPY (SELECT * FROM {table_name} WHERE created_at BETWEEN %s AND %s) TO STDOUT WITH CSV HEADER", (start_date, end_date))
-        cur.execute(f"COPY (SELECT * FROM {table_name} WHERE created_at BETWEEN %s AND %s limit 5) To '/tmp/2023-01-report.csv' With CSV HEADER DELIMITER ','", (start_date, end_date))
+        cur.execute(f"COPY (SELECT * FROM {table_name} limit 5) To '/tmp/2023-01-report.csv' With CSV HEADER DELIMITER ','", (start_date, end_date))
         with open(csv_filename, 'w', newline='') as csvfile:
             csv_writer = csv.writer(csvfile)
             csv_writer.writerow([desc[0] for desc in cur.description])
