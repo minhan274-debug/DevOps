@@ -8,7 +8,7 @@ import yaml
 
 def load_database_config():
     try:
-        with open('/opt/production/mss/current/config/database.yml', 'r') as file:
+        with open('/home/ubuntu/meperia/test/msss/current/configdatabase.yml', 'r') as file:
             config = yaml.safe_load(file)
         return config['production']  # Get information from the production section
     except FileNotFoundError:
@@ -91,7 +91,7 @@ def main():
     main_conn = connect_to_main_database()
     if main_conn is None:
         return
-    
+    '''
     # Get db_name, db_ip information from the organizations table
     organizations_info = get_organizations_info(main_conn)
     if organizations_info is None:
@@ -137,10 +137,13 @@ def main():
             # Remove temporary CSV file and zip file
             os.remove(csv_filename)
             os.remove(zip_filename)
-    
+    '''
     # Close connection to the main database
     main_conn.close()
 
 if __name__ == "__main__":
     main()
+
+
+
 
