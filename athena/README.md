@@ -4,3 +4,8 @@ This repositories was created to store code and usage instructions based on requ
 Note: Athena only queries on csv files and does not save data anywhere!
 
 
+* Please ensure that your server has Python 3 and pip3 installed, and install the following packages to run:
+    pip3 install psycopg2
+    pip3 install boto3
+    pip3 install pyyaml"
+

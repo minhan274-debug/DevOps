@@ -8,7 +8,7 @@ import yaml
 
 def load_database_config():
     try:
-        with open('/home/ubuntu/meperia/test/msss/current/configdatabase.yml', 'r') as file:
+        with open('/home/ubuntu/meperia/test/msss/current/config/database.yml', 'r') as file:
             config = yaml.safe_load(file)
         return config['production']  # Get information from the production section
     except FileNotFoundError:
