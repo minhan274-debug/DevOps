@@ -40,6 +40,20 @@ def connect_to_main_database():
             return None
     else:
         return None
+    
+def connect_to_database(db_ip, port, db_name, db_user, db_password):
+    try:
+        conn = psycopg2.connect(
+            host=db_ip,
+            port=port,
+            dbname=db_name,
+            user=db_user,
+            password=db_password
+        )
+        return conn
+    except psycopg2.Error as e:
+        print(f"Could not connect to database {db_name}:", e)
+        return None
 
 def get_organizations_info(conn):
     try:
@@ -98,16 +112,18 @@ def main():
     if organizations_info is None:
         main_conn.close()
         return
-    else:
-        for org_info in organizations_info:
-            db_name, db_ip = org_info
-            print("Organization:", db_name)
-            print("IP Address:", db_ip)
-    '''
+    
     # Iterate through each row of organizations_info
     for org_info in organizations_info:
-        db_name, _ = org_info
+        db_name, db_ip = org_info
         
+        # Connect to the database of db_name
+        db_conn = connect_to_database(db_ip, main_conn['port'], db_name, main_conn['username'], main_conn['password'])
+        if db_conn is None:
+            continue
+        else: 
+            print("success to connect: {db_name}")
+    '''
         # Table names list
         table_names = ['table_a_name', 'table_b_name', 'table_c_name']  # Modify table names list here
         
@@ -143,7 +159,7 @@ def main():
             # Remove temporary CSV file and zip file
             os.remove(csv_filename)
             os.remove(zip_filename)
-    '''
+    '''    
     # Close connection to the main database
     main_conn.close()
 
