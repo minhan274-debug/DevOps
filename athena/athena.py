@@ -61,7 +61,7 @@ def get_organizations_info(conn):
         cur = conn.cursor()
         
         # Execute a query to get db_name, db_ip from the organizations table
-        cur.execute("SELECT db_name, db_ipaddress FROM organizations;")
+        cur.execute("SELECT db_name, db_ipaddress, db_port, db_username, db_password  FROM organizations;")
         
         # Get the query result
         organizations_info = cur.fetchall()
@@ -115,10 +115,10 @@ def main():
     
     # Iterate through each row of organizations_info
     for org_info in organizations_info:
-        db_name, db_ip = org_info
+        db_name, db_ip, db_port, db_username, db_password = org_info
         
         # Connect to the database of db_name
-        db_conn = connect_to_database(db_ip, main_conn['port'], db_name, main_conn['username'], main_conn['password'])
+        db_conn = connect_to_database(db_ip, db_port, db_name, db_username, db_password)
         if db_conn is None:
             continue
         else: 
