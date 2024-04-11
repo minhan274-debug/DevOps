@@ -47,7 +47,7 @@ def get_organizations_info(conn):
         cur = conn.cursor()
         
         # Execute a query to get db_name, db_ip from the organizations table
-        cur.execute("SELECT db_name, db_ip FROM organizations;")
+        cur.execute("SELECT db_name, db_ipaddress FROM organizations;")
         
         # Get the query result
         organizations_info = cur.fetchall()
@@ -92,13 +92,18 @@ def main():
     if main_conn is None:
         return
     print("SUCCESS")
-    '''
+    
     # Get db_name, db_ip information from the organizations table
     organizations_info = get_organizations_info(main_conn)
     if organizations_info is None:
         main_conn.close()
         return
-    
+    else:
+        for org_info in organizations_info:
+            db_name, db_ip = org_info
+            print("Organization:", db_name)
+            print("IP Address:", db_ip)
+    '''
     # Iterate through each row of organizations_info
     for org_info in organizations_info:
         db_name, _ = org_info
