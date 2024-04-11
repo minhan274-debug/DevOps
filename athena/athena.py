@@ -144,10 +144,10 @@ def main():
             # Create CSV file and zip file names with the current date
             csv_filename = f"{temp_folder}/{table_name}_{start_date.strftime('%Y%m%d')}_{end_date.strftime('%Y%m%d')}.csv"
             zip_filename = f"{temp_folder}/{table_name}_{start_date.strftime('%Y%m%d')}_{end_date.strftime('%Y%m%d')}.zip"
-    '''        
+            
             # Export data from the table within the time range and write to CSV file
             export_to_csv(main_conn, db_name, table_name, csv_filename, start_date, end_date)
-            
+    '''        
             # Compress CSV file to zip file
             zip_csv_file(csv_filename, zip_filename)
             
