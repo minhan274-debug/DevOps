@@ -116,21 +116,20 @@ def main():
     # Iterate through each row of organizations_info
     for org_info in organizations_info:
         db_name, db_ip, db_port, db_username, db_password = org_info
-        
         # Connect to the database of db_name
         db_conn = connect_to_database(db_ip, db_port, db_name, db_username, db_password)
         if db_conn is None:
             continue
         else: 
             print(f"success to connect: {db_name}")
-    '''
+    
         # Table names list
-        table_names = ['table_a_name', 'table_b_name', 'table_c_name']  # Modify table names list here
+        table_names = ['master_item_histories', 'facility_item_histories', 'contract_line_histories', 'contract_match_histories', 'price_histogram_histories', 'requisition_item_histories']  # Modify table names list here
         
         # Create a temporary folder for each database
         temp_folder = f"/vol1/athena/{db_name}/"
         os.makedirs(temp_folder, exist_ok=True)
-        
+    '''    
         # Calculate start and end time for the time range (from the 1st day of the current month to the 1st day of the next month)
         current_date = datetime.now().date()
         start_date = current_date.replace(day=1)
