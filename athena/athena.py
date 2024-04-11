@@ -61,8 +61,7 @@ def get_organizations_info(conn):
         cur = conn.cursor()
         
         # Execute a query to get db_name, db_ip from the organizations table
-        cur.execute("SELECT db_name, db_ipaddress, db_port, db_username, db_password  FROM organizations;")
-        
+        cur.execute("SELECT db_name, db_ipaddress, db_port, db_username, db_password  FROM organizations WHERE id NOT IN (1) OR description ilike '%QC%' ORDER BY id = 68 desc, id;")
         # Get the query result
         organizations_info = cur.fetchall()
         
