@@ -145,10 +145,10 @@ def main():
             
             # Export data from the table within the time range and write to CSV file
             export_to_csv(db_conn, db_name, table_name, csv_filename, start_date, end_date)
-    '''        
+            
             # Compress CSV file to zip file
             zip_csv_file(csv_filename, zip_filename)
-            
+    '''        
             # Upload zip file to S3
             s3_bucket = "athena"
             s3_key = f"{db_name}/{table_name}/{os.path.basename(zip_filename)}"
