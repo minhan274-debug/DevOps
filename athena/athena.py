@@ -148,15 +148,15 @@ def main():
             
             # Compress CSV file to zip file
             zip_csv_file(csv_filename, zip_filename)
-            '''   
+               
             # Upload zip file to S3
-            s3_bucket = "athena"
+            s3_bucket = "mss-athena"
             s3_key = f"{db_name}/{table_name}/{os.path.basename(zip_filename)}"
             upload_to_s3(zip_filename, s3_bucket, s3_key)
-            '''
+            
             # Remove temporary CSV file and zip file
             os.remove(csv_filename)
-            #os.remove(zip_filename)
+            os.remove(zip_filename)
         
     # Close connection to the main database
     main_conn.close()
